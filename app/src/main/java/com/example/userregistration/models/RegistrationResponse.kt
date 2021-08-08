@@ -15,5 +15,4 @@ data class RegistrationResponse(
     @SerializedName("student_id")
     var studentId:String
 
-
     )

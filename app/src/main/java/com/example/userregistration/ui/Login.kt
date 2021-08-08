@@ -1,15 +1,18 @@
-package com.example.userregistration
+package com.example.userregistration.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.viewModels
+import com.example.userregistration.ApiInterface
+import com.example.userregistration.R
 import com.example.userregistration.api.ApiClient
+import com.example.userregistration.databinding.ActivityMainBinding
 import com.example.userregistration.models.LoginRequest
 import com.example.userregistration.models.LoginResponse
-import com.example.userregistration.models.RegistrationRequest
-import com.example.userregistration.models.RegistrationResponse
+import com.example.userregistration.viewmodel.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONObject
 import retrofit2.Call
@@ -17,25 +20,23 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Login : AppCompatActivity() {
-    lateinit var btnLogin:Button
-    lateinit var etusername:TextInputEditText
-    lateinit var etpassword:TextInputEditText
+    lateinit var binding: ActivityMainBinding
+    val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        castViews()
-    }
-    fun castViews(){
-        var error=false
-        etusername=findViewById(R.id.etusername)
-        etpassword=findViewById(R.id.etpassword)
-        btnLogin=findViewById(R.id.btnLogin)
+
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         btnLogin.setOnClickListener {
-            var password = etpassword.text.toString()
+
+            var password = binding.etpassword.text.toString()
             if(password.isEmpty()){
                 error = true
-                etpassword.setError("Password is required")
+                binding.etpassword.setError("Password is required")
             }
 
             var email = etusername.text.toString()

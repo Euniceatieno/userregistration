@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.userregistration.models.CourseResponse
 
-class CoursesAdapter(var courseList:List<Course>):RecyclerView.Adapter<CoursesViewHolder>(){
+class CoursesAdapter(var courseList:List<CourseResponse>):RecyclerView.Adapter<CoursesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoursesViewHolder {
         var itemView = LayoutInflater.from(parent.context).inflate(R.layout.courses_list_item,parent,false)
         return CoursesViewHolder(itemView)
@@ -14,10 +15,10 @@ class CoursesAdapter(var courseList:List<Course>):RecyclerView.Adapter<CoursesVi
 
     override fun onBindViewHolder(holder: CoursesViewHolder, position: Int) {
         var currentCourse=courseList[position]
-        holder.tvCourseName.text=currentCourse.courseName
+        holder.tvCourseName.text=currentCourse.course_name
         holder.tvDescription.text=currentCourse.description
         holder.tvTrainer.text=currentCourse.instructor
-        holder.tvCode.text=currentCourse.courseCode
+        holder.tvCode.text=currentCourse.course_code
 
     }
 
