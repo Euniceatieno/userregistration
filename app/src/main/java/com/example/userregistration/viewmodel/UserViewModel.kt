@@ -14,7 +14,7 @@ class UserViewModel:ViewModel() {
     var userRepository = UserRepository()
     fun registerUser(registrationRequest: RegistrationRequest){
         viewModelScope.launch {
-            val response =userRepository.registerStudent(registrationRequest)
+            val response = userRepository.registerStudent(registrationRequest)
             if (response.isSuccessful){
                 registrationLiveData.postValue(response.body())
             }

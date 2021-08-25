@@ -8,11 +8,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.UserRegistration">
-        <activity android:name=".ui.Login"></activity>
+        android:theme="@style/Theme.UserRegistration"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.CoursesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".courses"
+            android:exported="true" />
+        <activity android:name=".ui.Login" />
         <activity android:name=".ui.Courses" />
         <activity android:name=".MainActivity">
             <intent-filter>
