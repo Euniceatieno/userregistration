@@ -11,6 +11,7 @@ import com.example.userregistration.api.ApiClient
 import com.example.userregistration.databinding.ActivityMainBinding
 import com.example.userregistration.models.RegistrationRequest
 import com.example.userregistration.models.RegistrationResponse
+import com.example.userregistration.ui.CoursesActivity
 import com.example.userregistration.ui.CoursesListAdapter
 import com.example.userregistration.ui.Login
 import com.example.userregistration.viewmodel.UserViewModel
@@ -29,12 +30,13 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPreferences=getSharedPreferences(Constants.SHAREDPREFS, Context.MODE_PRIVATE)
+        redirect()
 
     }
     fun redirect(){
         var accessToken=sharedPreferences.getString(Constants.ACCESS_TOKEN,Constants.EMPTY_STRING)
         if (accessToken!!.isNotEmpty()){
-            startActivity(Intent(baseContext,CoursesListAdapter::class.java))
+            startActivity(Intent(baseContext,CoursesActivity::class.java))
         }
         else{
             startActivity(Intent(baseContext, Login::class.java))

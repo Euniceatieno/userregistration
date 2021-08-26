@@ -43,9 +43,12 @@ class Login : AppCompatActivity() {
                 email = email, password = password
             )
             loginViewModel.login(loginRequest)
-
+        }
             loginViewModel.loginLiveData.observe(this, { logResponse ->
                 Toast.makeText(baseContext, "Login Successful", Toast.LENGTH_LONG).show()
+                var editor=sharedPreferences.edit()
+                editor.putString("ACCESS_TOKEN",logResponse.access_token).apply()
+                editor.putString("STUDENT_ID",logResponse.student_id).apply()
                 var intent = Intent(baseContext, CoursesActivity::class.java)
                 startActivity(intent)
             })
@@ -54,6 +57,5 @@ class Login : AppCompatActivity() {
 
             })
         }
-    }
 }
 

@@ -12,14 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UserRegistration"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.CoursesActivity"
-            android:exported="true" />
-        <activity
-            android:name=".courses"
-            android:exported="true" />
-        <activity android:name=".ui.Login" />
-        <activity android:name=".ui.Courses" />
+        <activity android:name=".ui.Login"></activity>
+        <activity android:name=".ui.CoursesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
